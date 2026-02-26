@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ctpbax4vamctq"]
+
+[ext_resource type="PackedScene" uid="uid://cxsqgkqt2k314" path="res://scenes/misc/client_camera.tscn" id="1_dtyxf"]
+[ext_resource type="PackedScene" uid="uid://dg4h5naswv6nv" path="res://scenes/base/entity.tscn" id="1_y2s00"]
+[ext_resource type="Script" uid="uid://bh86iey5f4hqr" path="res://scripts/base/entity.gd" id="2_526id"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0aorq"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yshnf"]
+size = Vector3(10, 1, 10)
+
+[node name="World" type="Node3D" unique_id=1190972218]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1629764410]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=54495154]
+mesh = SubResource("BoxMesh_0aorq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1232811568]
+shape = SubResource("BoxShape3D_yshnf")
+
+[node name="CharacterBody3D" parent="." unique_id=1652360654 instance=ExtResource("1_y2s00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6513686, 0)
+script = ExtResource("2_526id")
+
+[node name="Camera3D" parent="CharacterBody3D" unique_id=1792012527 instance=ExtResource("1_dtyxf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5999999, 0)
+fov = 90.0
